@@ -1,0 +1,27 @@
+<div class="card shadow mb-4">
+  <div class="card-body">
+    <div class="table-responsive">
+      <table id="tabelaCategorias" class="table table-border" width="100%">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Descrição</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @categories.each do |cat|%>
+            <tr id="categoria_<%= cat.id %>">
+              <td><%= cat.nome %></td>
+              <td><%= cat.descricao %></td>
+              <td>
+                <%= link_to 'Editar', edit_category_path(cat), class: 'btn btn-info btn-xs', remote: true %>
+                <%= link_to 'Excluir', cat, remote: true, method: :delete, data: {confirm: "Deseja excluir a categoria: #{cat.nome}?"}, class: 'btn btn-danger btn-xs' %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
