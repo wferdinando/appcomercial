@@ -1,27 +1,39 @@
+<h1 class="h3 mb-2 text-gray-800">Categorias</h1>
+
+<div class="mb-1">
+  <%= link_to new_category_path, remote: true, class: 'btn btn-info', id: 'add-categoria-btn' do %>
+    <span class='fas fa-plus-square'></span>
+  <% end %>
+</div>
+
 <div class="card shadow mb-4">
   <div class="card-body">
     <div class="table-responsive">
-      <table id="tabelaCategorias" class="table table-border" width="100%">
+      <table id="tabelaCategorias" class="table table-bordered" width="100%">
         <thead>
           <tr>
-            <th>Nome</th>
-            <th>Descrição</th>
-            <th></th>
+            <th style='width:1%; text-align:center'>#</th>
+            <th style='width:29%;'>Nome</th>
+            <th style='width:55%;' >Descrição</th>
+            <th style='width:15%; text-align:center'>Ações</th>
           </tr>
         </thead>
         <tbody>
           <% @categories.each do |cat|%>
             <tr id="categoria_<%= cat.id %>">
-              <td><%= cat.nome %></td>
-              <td><%= cat.descricao %></td>
-              <td>
-                <%= link_to 'Editar', edit_category_path(cat), class: 'btn btn-info btn-xs', remote: true %>
-                <%= link_to 'Excluir', cat, remote: true, method: :delete, data: {confirm: "Deseja excluir a categoria: #{cat.nome}?"}, class: 'btn btn-danger btn-xs' %>
-              </td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
+              <td style="text-align:center"><%= cat.id %></td>
+                <td><%= cat.nome %></td>
+                <td><%= cat.descricao %></td>
+                <td style="text-align:center">
+                  <%= link_to 'Editar', edit_category_path(cat), class: 'btn btn-info btn-sm', remote: true %>
+                  <%= link_to 'Excluir', cat, remote: true, method: :delete, data: {confirm: "Deseja excluir a categoria: #{cat.nome}?"}, class: 'btn btn-danger btn-sm' %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
-</div>
+
+  <%= render 'modal_categorias' %>

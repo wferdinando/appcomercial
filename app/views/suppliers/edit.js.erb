@@ -1,0 +1,8 @@
+// Add the dialog
+$('#modal-fornecedores-title').html('Alterar Fornecedor');
+
+// Render the new form
+$('.modal-body-fornecedores').html('<%= j render("form") %>');
+
+//Show the dynamic dialog
+$('#modalFornecedoresShow').modal("show");

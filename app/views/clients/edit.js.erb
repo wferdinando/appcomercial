@@ -1,0 +1,8 @@
+// Add the dialog
+$('#modal-clientes-title').html('Alterar Cliente');
+
+// Render the new form
+$('.modal-body-clientes').html('<%= j render("form") %>');
+
+//Show the dynamic dialog
+$('#modalClientes').modal("show");

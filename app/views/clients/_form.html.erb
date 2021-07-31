@@ -1,0 +1,98 @@
+<%= form_with model: @cliente, remote: true do |f| %>
+  <div class="form-group">
+    <h4 class='control-label'>Informações do Cliente</h4>
+  </div>
+
+  <div class="form-row">
+    <div class="item form-group col-md-8<%= @cliente.errors[:nome].any? ? 'has-error has-feedback' : '' %>">
+      <%= f.label :nome, 'Nome' %>
+      <div class="input-group">
+        <%= f.text_field :nome, class: 'form-control'%>
+        <% if @cliente.errors[:nome].any? %>
+          <p class="bg-danger"><%= @cliente.errors[:nome].to_s[/\w([^"]*)/] %></p>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="item form-group col-md-4<%= @cliente.errors[:telefone].any? ? 'has-error has-feedback' : '' %>">
+      <%= f.label :telefone, 'Telefone' %>
+      <div class="input-group">
+        <%= f.telephone_field :telefone, class: 'form-control'%>
+        <% if @cliente.errors[:telefone].any? %>
+          <p class="bg-danger"><%= @cliente.errors[:telefone].to_s[/\w([^"]*)/] %></p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="item form-group col-md-10<%= @cliente.errors[:logradouro].any? ? 'has-error has-feedback' : '' %>">
+      <%= f.label :logradouro, 'Logradouro' %>
+      <div class="input-group">
+        <%= f.text_field :logradouro, class: 'form-control'%>
+        <% if @cliente.errors[:logradouro].any? %>
+          <p class="bg-danger"><%= @cliente.errors[:logradouro].to_s[/\w([^"]*)/] %></p>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="item form-group col-md-2<%= @cliente.errors[:numero].any? ? 'has-error has-feedback' : '' %>">
+      <%= f.label :numero, 'Número' %>
+      <div class="input-group">
+        <%= f.text_field :numero, class: 'form-control'%>
+        <% if @cliente.errors[:numero].any? %>
+          <p class="bg-danger"><%= @cliente.errors[:numero].to_s[/\w([^"]*)/] %></p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="item form-group col-md-6<%= @cliente.errors[:bairro].any? ? 'has-error has-feedback' : '' %>">
+      <%= f.label :bairro, 'Bairro' %>
+      <div class="input-group">
+        <%= f.text_field :bairro, class: 'form-control' %>
+        <% if @cliente.errors[:bairro].any? %>
+          <p class="bg-danger"><%= @cliente.errors[:bairro].to_s[/\w([^"]*)/] %></p>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="item form-group col-md-6<%= @cliente.errors[:complemento].any? ? 'has-error has-feedback' : '' %>">
+      <%= f.label :complemento, 'Complemento' %>
+      <div class="input-group">
+        <%= f.text_field :complemento, class: 'form-control'%>
+        <% if @cliente.errors[:complemento].any? %>
+          <p class="bg-danger"><%= @cliente.errors[:complemento].to_s[/\w([^"]*)/] %></p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="item form-group col-md-10<%= @cliente.errors[:cidade].any? ? 'has-error has-feedback' : '' %>">
+      <%= f.label :cidade, 'Cidade' %>
+      <div class="input-group">
+        <%= f.text_field :cidade, class: 'form-control' %>
+        <% if @cliente.errors[:cidade].any? %>
+          <p class="bg-danger"><%= @cliente.errors[:cidade].to_s[/\w([^"]*)/] %></p>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="item form-group col-md-2<%= @cliente.errors[:uf].any? ? 'has-error has-feedback' : '' %>">
+      <%= f.label :uf, 'Estado' %>
+      <div class="input-group">
+        <%= f.text_field :uf, class: 'form-control'%>
+        <% if @cliente.errors[:uf].any? %>
+          <p class="bg-danger"><%= @cliente.errors[:uf].to_s[/\w([^"]*)/] %></p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="">
+    <%= f.submit @cliente.new_record? ? 'Salvar' : 'Alterar', class:'btn btn-success' %>
+    <button type="reset" class="btn btn-secondary">Limpar</button>
+  </div>
+<% end %>

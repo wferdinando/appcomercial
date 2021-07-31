@@ -1,0 +1,30 @@
+<%= form_with model: @category, remote: true do |f| %>
+  <div class="form-group">
+    <h4 class='control-label'>Informações da Categoria</h4>
+  </div>
+
+  <div class="item form-group<%= @category.errors[:nome].any? ? 'has-error has-feedback' : '' %>">
+    <%= f.label :nome, 'Nome' %>
+    <div class="input-group">
+      <%= f.text_field :nome, class: 'form-control', placeholder:' Insira o nome da categoria.'  %>
+      <% if @category.errors[:nome].any? %>
+        <p class="bg-danger"><%= @category.errors[:nome].to_s[/\w([^"]*)/] %></p>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="item form-group<%= @category.errors[:descricao].any? ? 'has-error has-feedback' : '' %>">
+    <%= f.label :descricao, 'Descrição' %>
+    <div class="input-group">
+      <%= f.text_area :descricao, class: 'form-control', placeholder:' Insira a descrição da categoria.'  %>
+      <% if @category.errors[:descricao].any? %>
+        <p class="bg-danger"><%= @category.errors[:categoria].to_s[/\w([^"]*)/] %></p>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="">
+    <%= f.submit @category.new_record? ? 'Salvar' : 'Alterar', class:'btn btn-success' %>
+    <button type="reset" class="btn btn-secondary">Limpar</button>
+  </div>
+<% end %>

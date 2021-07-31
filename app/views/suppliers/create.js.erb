@@ -1,0 +1,4 @@
+$('#modalFornecedores').modal('toggle');
+$('#tabelaFornecedores').append(
+  '<tr id="fornecedor_<%= @supplier.id %>" ><td style="text-align:center"><%= @supplier.id %></td><td><%= @supplier.nome %></td><td><%= @supplier.telefone %></td><td><%= @supplier.created_at.strftime("%d/%m/%Y") %></td><td style="text-align:center"><%= link_to "Editar", edit_client_path(@supplier), class: "btn btn-info btn-sm", remote: true %> <%= link_to "Excluir", @supplier, remote: true, method: :delete, data: {confirm: "Deseja excluir o cliente: #{@supplier.nome}?"}, class: "btn btn-danger btn-sm" %></td></tr>'
+);

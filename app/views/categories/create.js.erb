@@ -1,0 +1,5 @@
+$('#modalCategorias').modal('toggle');
+$('#tabelaCategorias').append(
+  '<tr id="categoria_<%= @category.id %>"><td style="text-align:center"><%= @category.id %></td><td><%= @category.nome %></td><td><%= @category.descricao %></td><td style="text-align:center"><%= link_to "Editar", edit_category_path(@category), class: "btn btn-info btn-sm", remote: true %> <%= link_to "Excluir", @category, remote: true, method: :delete, data: {confirm: "Deseja excluir a categoria: #{@category.nome}?"}, class: "btn btn-danger btn-sm" %></td></tr>'
+);
+
